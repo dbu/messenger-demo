@@ -1,0 +1,2 @@
+cd /www
+export PS1="\u@${SERVER_NAME%%.*}:\w\# "
