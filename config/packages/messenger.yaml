@@ -4,18 +4,24 @@ framework:
 
         transports:
             # https://symfony.com/doc/current/messenger.html#transport-configuration
-            async:
-                dsn: '%env(MESSENGER_TRANSPORT_DSN)%'
+            neuromancer:
+                dsn: '%env(MESSENGER_TRANSPORT_DSN)%&queue_name=neuromancer'
                 options:
-                    use_notify: true
+                    use_notify: false # would probably be more efficient if we could use LISTEN/NOTIFY, but did not work for me, so disabling.
+                    check_delayed_interval: 60000
+                retry_strategy:
+                    max_retries: 3
+                    multiplier: 2
+            wintermute:
+                dsn: '%env(MESSENGER_TRANSPORT_DSN)%&queue_name=wintermute'
+                options:
+                    use_notify: false
                     check_delayed_interval: 60000
                 retry_strategy:
                     max_retries: 3
                     multiplier: 2
             failed: 'doctrine://default?queue_name=failed'
-            # sync: 'sync://'
 
         routing:
-
-            # Route your messages to the transports
-            # 'App\Message\YourMessage': async
+            App\Message\NeuromancerMessage: neuromancer
+            App\Message\WintermuteMessage: wintermute

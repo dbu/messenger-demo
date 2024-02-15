@@ -13,6 +13,7 @@ COPY --from=composer:latest /usr/bin/composer /usr/local/bin/composer
 RUN apk -U upgrade && apk add --no-cache \
         tzdata \
         icu-data-full \
+        parallel \
         postgresql-client \
         php82 \
         php82-apcu \
@@ -27,6 +28,7 @@ RUN apk -U upgrade && apk add --no-cache \
         php82-pdo_pgsql \
         php82-phar \
         php82-session \
+        php82-simplexml \
         php82-tokenizer \
         php82-xml \
         php82-xmlwriter \
@@ -34,7 +36,7 @@ RUN apk -U upgrade && apk add --no-cache \
 
 RUN ln -sf /usr/bin/php82 /usr/bin/php
 RUN adduser -D -S -G www-data www-data
-
+RUN touch /home/www/.parallel/will-cite # suppress notice from parallel
 
 ARG PHP_INI_DIR=/etc/php82
 

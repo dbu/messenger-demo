@@ -1,0 +1,38 @@
+{% extends 'base.html.twig' %}
+
+{% block header_extra %}
+<meta http-equiv="refresh" content="1">
+{% endblock %}
+
+{% block title %}Status - Messenger Demo{% endblock %}
+
+{% block body %}
+<div class="wrapper">
+    <h1>Status</h1>
+
+    <table style="width: 100%; height: 50vh; vertical-align: text-top;">
+        <tr>
+            <td style="width: 50%">
+                <h2>Neuromancer</h2>
+                <p>Messages in queue: {{ neuromancer_count }}</p>
+                {% for msg in neuromancer_msg %}
+                    <p style="font-size: 0.5em; margin-bottom: 0;">
+                        {{ msg.created|date('d.m.Y G:m:s') }}<br>
+                    </p>
+                    <p style="margin-top: 0">{{ msg.text }}</p>
+                {% endfor %}
+            </td>
+            <td style="width: 50%">
+                <h2>Wintermute</h2>
+                <p>Messages in queue: {{ wintermute_count }}</p>
+                {% for msg in wintermute_msg %}
+                    <p style="font-size: 0.5em; margin-bottom: 0">
+                        {{ msg.created|date('d.m.Y G:i:s') }}<br>
+                    </p>
+                    <p style="margin-top: 0">{{ msg.text }}</p>
+                {% endfor %}
+            </td>
+        </tr>
+    </table>
+</div>
+{% endblock %}
