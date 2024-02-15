@@ -8,7 +8,7 @@ use App\Repository\NeuromancerRepository;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: NeuromancerRepository::class)]
-readonly class Neuromancer
+class Neuromancer
 {
     #[ORM\Id]
     #[ORM\GeneratedValue]

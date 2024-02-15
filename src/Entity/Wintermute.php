@@ -8,7 +8,7 @@ use App\Repository\WintermuteRepository;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: WintermuteRepository::class)]
-readonly class Wintermute
+class Wintermute
 {
     #[ORM\Id]
     #[ORM\GeneratedValue]
