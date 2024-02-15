@@ -36,7 +36,7 @@ RUN apk -U upgrade && apk add --no-cache \
 
 RUN ln -sf /usr/bin/php82 /usr/bin/php
 RUN adduser -D -S -G www-data www-data
-RUN touch /home/www/.parallel/will-cite # suppress notice from parallel
+RUN mkdir /home/php/.parallel && touch /home/php/.parallel/will-cite # suppress notice from parallel
 
 ARG PHP_INI_DIR=/etc/php82
 
