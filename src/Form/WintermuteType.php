@@ -15,7 +15,11 @@ class WintermuteType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('text')
+            ->add('text', null, [
+                'attr' => [
+                    'autofocus' => true,
+                ]
+            ])
             ->add('submit', SubmitType::class)
         ;
     }

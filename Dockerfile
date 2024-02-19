@@ -23,7 +23,7 @@ RUN apk -U upgrade && apk add --no-cache \
         php82-intl \
         php82-iconv \
         php82-opcache \
-        php82-openssl
+        php82-openssl \
         php82-json \
         php82-mbstring \
         php82-pdo_pgsql \

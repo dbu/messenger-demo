@@ -8,6 +8,23 @@ You can open `/stats` in a web browser to see what is going on. That page refres
 
 To generate a bunch of messages to see the queues in action, there is a command `app:generate-messages`.
 
+## Setup
+
+You need docker with docker-compose. Start the system with
+
+    make up
+
+On first run, you nedd to initialize the database with
+
+    make database
+    make migration
+
+And get a command line in the container with
+
+    make shell
+
+## Usage
+
 In order to ingest the data, you need to run the message workers. Run this Symfony command and choose the queue you want
 to consume from:
 
